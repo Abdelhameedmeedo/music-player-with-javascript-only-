@@ -1,0 +1,623 @@
+//variables
+$mainBackColor:cornflowerblue;
+$mainColor:white;
+$Pabsolute:absolute;
+$playPauseColor:yellowgreen;
+//black mode
+$colorMode:azure;
+$filmBackground:cornflowerblue;
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: gray;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+//music and film funcs
+@mixin soundFilmContainer {
+    list-style: none;
+    display: grid;
+    justify-content: center;
+    padding-top: 50px;
+    font-size: 20px;
+    grid-gap: 7px;
+}
+@mixin soundFilmContainerLi {
+    border-bottom: 1px solid $mainColor;
+    cursor: pointer;
+    text-align: center;
+}
+@mixin filmSoundControls {
+    list-style: none;
+    position: $Pabsolute;
+    background-color: $mainColor;
+    color: darkviolet;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    justify-content: center;
+    bottom: 0;
+    height: 50px;
+    align-content: center;
+    justify-items: center;
+    padding-right: 35px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+@mixin pauseIcon {
+    font-weight: bold;
+    color: $playPauseColor;
+    font-size: 22px;
+    position: $Pabsolute;
+    top: 354px;
+    z-index: 1;
+    left: 48.2%;
+    display: none;
+    cursor: pointer;
+}
+@mixin soundFilmLength {
+    position: $Pabsolute;
+    width: 23px;
+    height: 23px;
+    top: 175px;
+    left: 49%;
+    text-align: center;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    line-height: 23px;
+}
+//film funcs
+@mixin filmTime {
+    width: 35px;
+    text-align: center;
+    border-radius: 3px;
+    height: 20px;
+    position: $Pabsolute;
+    @include filmTotalTime();
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+@mixin filmTotalTime {
+    box-shadow: 1px 1px 2px black;
+}
+//codes
+.music-page{
+    .container{
+        // background-color: #9C51E0;
+        background-color: $mainBackColor;
+        color: $mainColor;
+        height: 618px;
+        .nav-section > div{
+            border-right: 1px solid $mainColor;
+            border-bottom: 1px solid $mainColor;
+            text-align: center;
+            
+        }div:last-child{border-right: none;}
+        .content > div{
+            border-right: 1px solid $mainColor;
+            height: 560px;
+        }div:last-child{border-right: none;}
+        .setting-content{
+            .music-settings{
+                list-style: none;
+                display: grid;
+                padding-top: 10px;
+                li{
+                    margin-top: 10px;
+                    font-size: 18px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .content{
+            .music-content{ //music content section
+                overflow: auto;
+                .choose-tools{
+                    position: fixed;
+                    display: grid;
+                    z-index: 1;
+                    grid-template-columns: 50% 50%;
+                    width: 35%;
+                    align-items: stretch;
+                    padding-top: 7px;
+                    text-align: center;
+                    height: 33px;
+                    padding-right: 20px;
+                    font-size: 20px;
+                    background: cadetblue;
+                    border: 1px solid $mainColor;
+                    border-top-color: unset;
+                    li{cursor: pointer;opacity: .5;}
+                    li.active{opacity: 1;}
+                }
+                .sound-container{
+                    @include soundFilmContainer();
+                    li{
+                       @include soundFilmContainerLi();
+                    }
+                }
+                .film-container{
+                    @include soundFilmContainer();
+                    li{
+                        @include soundFilmContainerLi();
+                        text-align: end;
+                        video{
+                            width: 100px;
+                            height: 90px;
+                            position: relative;
+                            left: -28%;
+                            top: -1px;
+                        }
+                    }
+                }
+            }
+            .running-content{ //running content section
+                .sound-view{
+                    position: $Pabsolute;
+                    top: 160px;
+                    height: 400px;
+                    width: 94%;
+                    .name-view{
+                        position: $Pabsolute;
+                        left: 35%;
+                        top: 50px;
+                        font-size: 25px;
+                        background: $playPauseColor;
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 140px;
+                        border: 1px solid $mainColor;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        -o-border-radius: 50%;
+                    }
+                    .sound-length{
+                        @include soundFilmLength();
+                    }
+                    .timing-list{
+                        position: absolute;
+                        top: 300px;
+                        background: steelblue;
+                        display: grid;
+                        grid-template-columns: 33.3% 33.3% 33.3%;
+                        width: 70%;
+                        left: 16%;
+                        list-style: none;
+                        height: 20px;
+                        border-radius: 10px;
+                        .timeline{
+                            background: #ddd;
+                            width: 170%;
+                            position: relative;
+                            height: 7px;
+                            left: -60%;
+                            border-radius: 5px;
+                            -webkit-border-radius: 5px;
+                            -moz-border-radius: 5px;
+                            -ms-border-radius: 5px;
+                            -o-border-radius: 5px;
+                            top: 6px;
+                            cursor: pointer;
+                            .timeline-bar{
+                                border-radius: inherit;
+                                width: 0%;
+                                height: inherit;
+                                position: $Pabsolute;
+                                background-image: linear-gradient(45deg,tomato,slateblue);
+                                -webkit-border-radius: inherit;
+                                -moz-border-radius: inherit;
+                                -ms-border-radius: inherit;
+                                -o-border-radius: inherit;
+                                .timeline-bullet{
+                                    position: $Pabsolute;
+                                    display: none;
+                                    width: 10px;
+                                    height: 10px;
+                                    border-radius: inherit;
+                                    -webkit-border-radius: inherit;
+                                    -moz-border-radius: inherit;
+                                    -ms-border-radius: inherit;
+                                    -o-border-radius: inherit;
+                                    right: -1px;
+                                    background: coral;
+                                    top: -1px;
+                                }
+                            }
+                            .timeline-bar:hover .timeline-bullet{display: block;}
+                        }
+                        .duration{position: $Pabsolute;right: 30px;}
+                    }
+                    .tools-view{
+                       @include filmSoundControls();
+                       width: 100%;
+                        li{font-size: 22px;cursor: pointer;}
+                        .fa-play-circle{
+                          font-weight: bold;
+                          color: $playPauseColor;
+                          border-radius: 10px;
+                        }
+                    }
+                    .fa-pause-circle{
+                        font-weight: bold;
+                        color: $playPauseColor;
+                        font-size: 22px;
+                        position: $Pabsolute;
+                        top: 354px;
+                        z-index: 1;
+                        left: 48.2%;
+                        display: none;
+                        cursor: pointer;
+                    }
+                    .fa-redo-alt{
+                        position: $Pabsolute;
+                        top: 358px;
+                        color: darkviolet;
+                        z-index: 1;
+                        right: 18px;
+                        font-size: 18px;
+                        cursor: pointer;
+                    }
+                }
+                .film-view{
+                    display: none;
+                    width: 95%;
+                    bottom: 10px;
+                    height: 95%;
+                    .film-screen{
+                        width: 380px;
+                        border: 1px solid aliceblue;
+                        height: 215px;
+                        position: $Pabsolute;
+                        left: 11%;
+                        top: 60px;
+                        display: none
+                    }
+                    .film-length{
+                        @include soundFilmLength();
+                        background: blueviolet;
+                        top: -215px;
+                        left: 0px;
+                        border-radius: unset;
+                        height: 20px;
+                        -webkit-border-radius: unset;
+                        -moz-border-radius: unset;
+                        -ms-border-radius: unset;
+                        -o-border-radius: unset;
+                        display: none;
+                    }
+                    .film-timeline{
+                        display: none;
+                        position: relative;
+                        width: 79%;
+                        height: 10px;
+                        background: #ddd;
+                        border-radius: 20px;
+                        top: 6px;
+                        left: -20px;
+                        cursor: pointer;
+                        .film-timeline-bar{
+                            position: $Pabsolute;
+                            background-image: linear-gradient(45deg, royalblue, chartreuse);
+                            width: 0%;
+                            border-radius: inherit;
+                            height: inherit;
+                            .film-bullet{
+                                position: $Pabsolute;
+                                width: 10px;
+                                height: 10px;
+                                border-radius: inherit;
+                                -webkit-border-radius: inherit;
+                                -moz-border-radius: inherit;
+                                -ms-border-radius: inherit;
+                                -o-border-radius: inherit;
+                                background-color: tomato;
+                                right: -1px;
+                            }
+                        }
+                    }
+                    .film-time{
+                        position: relative;
+                        list-style: none;
+                        top: 276px;
+                        display: flex;
+                        justify-content: center;
+                        width: 378px;
+                        left: 40px;
+                        .film-current,.film-duration{
+                           @include filmTime();
+                        }
+                        .film-current{left: 10px; display: none;}
+                        .film-duration{left: 88%; display: none;}
+                    }
+                    h3{
+                        @include filmTotalTime();
+                        position: $Pabsolute;
+                        top: 280px;
+                        display: none;
+                        left: 45%;
+                        width: fit-content;
+                        padding: 5px;
+                        border-radius: 3px;
+                    }
+                    .fa-pause-circle{
+                       @include pauseIcon();
+                       top: 514px;
+                       left: 48.8%
+                    }
+                    .film-controls{
+                       @include filmSoundControls();
+                       width:95%;
+                       font-size:22px;
+                       li{cursor: pointer;}
+                    }
+                }
+            }
+            //hide mobile secction in window size
+            .mob-nav{display: none;}
+        }
+    }
+    .darkMode{
+        background-color: black;
+        color: $colorMode;
+        .sound-view .tools-view{background: $filmBackground;}
+        .film-view h3{background: $filmBackground;}
+        .film-current,.film-duration{
+            background: $filmBackground;
+        }
+    }
+}
+//load section
+@mixin loadCircle {
+    border-radius: 50%;
+    position: $Pabsolute;
+    background-color: lightseagreen;
+    border: 2px solid aliceblue;
+}
+.load{
+    transition: all 1s ease-in-out;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg,blue,green);
+    top: 0;
+    left: 0;
+    z-index: 1;
+    .circle
+    {
+        left: 42%;
+        top: 30%;
+        width: 200px;
+        height: 200px;
+        @include loadCircle();
+        .inner-circle
+        {
+            width: 170px;
+            height: 170px;
+            left: 7%;
+            top: 15%; 
+            @include loadCircle();
+            h3{
+                font-family: 'Qahiri';
+                position: $Pabsolute;
+                left: 34%;
+                font-size: 60px;
+                top: 30px;
+                color: aliceblue;
+            } 
+        }
+    }
+}
+////////////// mobile /////////////////
+$soundWidth:106.2%;
+$soundLeft:-12px;
+$filmTimeBack:black;
+$mobBack:steelblue;
+$popUpColor:white;
+@media only screen and (max-width:768px) {
+    .load{
+        .circle{left: 25%;}
+    }
+    ::-webkit-scrollbar{display: none;width: unset;}
+    .music-page .container{background-color: white;
+        .nav-section{display: none;}
+        .content > div{height: 0px;}
+        .content {
+            // .setting-content{background-color: red;z-index: 99;}
+            .music-content{
+                background-color: darkcyan;
+                z-index: 1;
+                height: 554px;
+                margin-top: 30px;
+                .choose-tools{left: 10px;position: fixed;width: 95%;}
+            }
+            .running-content{
+                position: $Pabsolute;
+                width: 100%;
+                top: 555px;
+                max-height: 0;
+                .sound-view{
+                    left: 12px;
+                    top: -260px;
+                    z-index: 1;
+                    .name-view{
+                        top: 290px;
+                        border-radius: unset;
+                        -webkit-border-radius: unset;
+                        height: 40px;
+                        width: $soundWidth;
+                        left: $soundLeft;
+                        border: unset;
+                        line-height: 37px;
+                        -moz-border-radius: unset;
+                        -ms-border-radius: unset;
+                        -o-border-radius: unset;
+                    }
+                    .sound-length{
+                        top: 300px;
+                        left: 20px;
+                        font-size: 20px;
+                    }
+                    .fa-pause-circle{
+                        top: 365px;
+                        left: 47.5%;
+                    }
+                    .tools-view{
+                        bottom: -11px;
+                        border-radius: unset;
+                        width: $soundWidth;
+                        left: $soundLeft;
+                        -webkit-border-radius: unset;
+                        -moz-border-radius: unset;
+                        -ms-border-radius: unset;
+                        -o-border-radius: unset;
+                    }
+                    .timing-list{
+                        left: $soundLeft;
+                        top: 330px;
+                        background-color: darkslategray;
+                        border-radius: unset;
+                        width: $soundWidth;
+                        .timeline{width: 200%;left: -80px;}
+                    }
+                }
+                .film-container{left: 0;}
+                .film-view{
+                    z-index: 1;
+                    background: palegreen;
+                    height: 66px;
+                    width: 100%;
+                    position: absolute;
+                    top: 31px;
+                    left: 0;
+                    .film-screen{
+                        left: 9px;
+                        position: absolute;
+                        z-index: 1;
+                        border: 1px solid rebeccapurple;
+                        top: -176px;
+                    }
+                    .fa-pause-circle{
+                        top: 77px;
+                        left: 47.5%;
+                        color: blueviolet;
+                    }
+                    .film-time{
+                        left: 9px;
+                        z-index: 1;
+                        top: 42px;
+                        .film-current{left: 1px;background-color: $filmTimeBack;}
+                        .film-timeline{
+                            .film-timeline-bar{
+                                .film-bullet{right: -5px;}
+                            }
+                        }
+                        .film-duration{
+                            left: 92%;
+                            box-shadow: -1px 1px 2px black;
+                            background-color: $filmTimeBack;
+                        }
+                    }
+                    .film-controls{
+                        background: palegreen;
+                        position: absolute;
+                        top: 63px;
+                        border-radius: unset;
+                        width: 100%;
+                        left: 0px;
+                        border-top: 1px solid darkblue;
+                    }
+                }
+            }
+            //mobile section 
+            .mob-nav{
+                display: block;
+                position: $Pabsolute;
+                z-index: 1;
+                top: 0;
+                width: 100%;
+                height: 31px;
+                background: $mobBack;
+                .fa-bars{
+                    position:$Pabsolute ;
+                    left: 12px;
+                    top: 5px;
+                    font-size: 20px;
+                }
+                .mob-links{
+                    position: $Pabsolute;
+                    transition: all .6s ease-in-out;
+                    left: 0;
+                    border-top: 1px solid;
+                    width: 100%;
+                    background: $mobBack;
+                    top: 29px;
+                    display: none;
+                    list-style: none;
+                    height: 45px;
+                    align-items: center;
+                    li{
+                        position: relative;
+                        left: -18px;
+                        font-size: 18px;
+                    }
+                }
+                .links-toggle{display: flex;}
+            }
+    }
+}
+.popup{
+    width: 100%;
+    height: 100%;
+    position: $Pabsolute;
+    background-color: rgba(1,1,1,.4);
+    top: 0;
+    z-index: 2;
+    .close-btn{
+        position: $Pabsolute;
+        height: 30px;
+        width: 30px;
+        background-color: red;
+        color: $popUpColor;
+        font-size: 25px;
+        font-weight: bold;
+        top: 10px;
+        z-index: 2;
+        right: 10px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 50px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        -o-border-radius: 50px;
+}
+    .setting-content{
+        position: $Pabsolute;
+        background-color: cadetblue;
+        width: 100%;
+        top: 60px;
+        height: 85%;
+        font-size: 20px;
+        .music-settings{
+        list-style: none;
+        padding-top: 10px;
+        color: $popUpColor;
+        }
+    }
+}
+}

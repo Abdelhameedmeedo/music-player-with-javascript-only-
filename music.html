@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="sass/all.min.css">
+    <link rel="stylesheet" href="sass/bootstrap.min.css">
+    <link rel="stylesheet" href="sass/music.css">
+  </head>
+  <body>
+    <!--start page-->
+    <div class="music-page">
+      <div class="container">
+        <!--start nav-->
+        <div class="row nav-section">
+          <!--setting-section-->
+          <div class="col-lg-2 setting-section">
+            <h3>Music</h3>
+          </div>
+          <!--music-section-->
+          <div class="col-lg-5 music-section">
+            <h3>List</h3>
+          </div>
+          <!--running section-->
+          <div class="col-lg-5 running-section">
+            <h3>Running</h3>
+          </div>
+        </div>
+        <!--start content-->
+        <div class="row content">
+          <!--setting-section-->
+          <div class="col-lg-2 setting-content">
+            <ul class="music-settings">
+              <li class="dark-mode"><i class="fas fa-moon">
+                   Dark mode </i></li>
+            </ul>
+          </div>
+          <!--music-content-->
+          <div class="col-lg-5 music-content">
+            <ul class="choose-tools">
+              <li class="fas fa-film"></li>
+              <li class="fas fa-music active"></li>
+            </ul>
+            <ul class="sound-container"></ul>
+            <ul class="film-container"></ul>
+          </div>
+          <!--running content-->
+          <div class="col-lg-5 running-content">
+            <div class="sound-view"><span class="name-view"></span>
+              <ul class="timing-list">
+                <li class="current-time"></li>
+                <li class="timeline">
+                  <div class="timeline-bar"><span class="timeline-bullet"></span></div>
+                </li>
+                <li class="duration"> </li>
+              </ul><i class="fas fa-pause-circle"></i>
+              <ul class="tools-view">
+                <li class="fas fa-arrow-alt-circle-left" title="prev-song"></li>
+                <li class="far fa-play-circle" title="play"></li>
+                <li class="fas fa-arrow-alt-circle-right" title="next-song"></li>
+              </ul>
+            </div>
+            <div class="film-view">
+              <video class="film-screen"></video>
+              <ul class="film-time">
+                <li class="film-current"></li>
+                <li class="film-duration"></li>
+              </ul>
+              <h3> </h3><i class="fas fa-pause-circle"></i>
+              <ul class="film-controls">
+                <li class="fas fa-arrow-alt-circle-left" title="prev-film"></li>
+                <li class="far fa-play-circle" title="play"></li>
+                <li class="fas fa-arrow-alt-circle-right" title="next-film"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--js files-->
+    <script type="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/music.js"></script>
+  </body>
+</html>

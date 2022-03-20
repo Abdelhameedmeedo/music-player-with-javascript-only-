@@ -1,0 +1,86 @@
+doctype html
+html
+    head
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+         script( src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+        link (href="https://fonts.googleapis.com/css2?family=Qahiri&display=swap" rel="stylesheet")
+        link(rel='stylesheet' ,href='sass/all.min.css')
+        link(rel='stylesheet' ,href='sass/bootstrap.min.css')
+        link(rel='stylesheet' ,href='sass/music.css')
+    body
+        //start page
+        div(class='music-page')
+            div(class='container')
+                //start nav
+                div(class='row nav-section')
+                    //setting-section
+                    div(class='col-lg-2 setting-section')
+                        h3 Music
+                    //music-section
+                    div(class='col-lg-5 music-section')
+                        h3 List
+                    //running section
+                    div(class='col-lg-5 running-section')
+                        h3 Running
+                //start content
+                div(class='row content')
+                    //setting-section
+                    div(class='col-lg-2 col-sm-12 setting-content')
+                        ul(class='music-settings')
+                            li(class='dark-mode')
+                                i(class="fas fa-moon") 
+                                    |Mode 
+                    //music-content
+                    div(class='col-lg-5 col-sm-12 music-content')
+                        ul(class='choose-tools')
+                            li(class='fas fa-film')
+                            li(class='fas fa-music active')
+                        ul(class='sound-container')
+                        ul(class='film-container')
+                    //running content
+                    div(class='col-lg-5 col-sm-12 running-content')
+                        div(class='sound-view')
+                            span(class='name-view')
+                            span(class='sound-length')
+                            ul(class='timing-list')
+                                li(class='current-time')
+                                li(class='timeline')
+                                    div(class='timeline-bar')
+                                        span(class='timeline-bullet')
+                                li(class='duration')  
+                            i(class='fas fa-pause-circle')
+                            ul(class='tools-view')
+                                li(class='fas fa-arrow-alt-circle-left' ,title='prev-song')
+                                li(class='far fa-play-circle',title='play')
+                                li(class='fas fa-arrow-alt-circle-right',title='next-song')
+                        div(class='film-view')
+                            video(class='film-screen')
+                            ul(class='film-time')
+                                li(class='film-current')
+                                li(class='film-length')
+                                 li(class='film-timeline')
+                                    div(class='film-timeline-bar')
+                                        span(class='film-bullet')
+                                li(class='film-duration')
+                            h3 
+                            i(class='fas fa-pause-circle')
+                            ul(class='film-controls')
+                                li(class='fas fa-arrow-alt-circle-left' ,title='prev-film')
+                                li(class='far fa-play-circle',title='play')
+                                li(class='fas fa-arrow-alt-circle-right',title='next-film')            
+                    //mobile navbar
+                    div(class='mob-nav')
+                        li(class='fas fa-bars')
+                        ul(class='mob-links')
+                            li Settings
+        //load section
+        div(class='load')
+            div(class='circle')
+                div(class='inner-circle')
+                    h3 M
+        //js files
+        script(type='js/bootstrap.min.js')
+        //- script( src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")
+        //- script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+        script(src='js/music.js')
+    
